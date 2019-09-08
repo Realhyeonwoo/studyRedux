@@ -35,13 +35,22 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    products: state.products, 
-    user: state.user, 
-    userPlusProp: `userPlusProp is ${props.aRandomProps}`
-  }
-}; 
+const productsSelector = createSelector(
+  state =>state.products,
+  products => products
+); 
+const userSelector = createSelector(
+  state =>state.user,
+  user => user
+); 
+const mapStateToProps = createSelector(
+  productsSelector, 
+  userSelector, 
+  (products, user) => ({
+    products,
+    user 
+  })
+)
 
 const mapActionsToProps = {
     onUpdateUser: updateUser, 
