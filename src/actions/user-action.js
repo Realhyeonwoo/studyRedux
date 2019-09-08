@@ -23,8 +23,6 @@ export const showError = () => {
 
 export const apiRequest = () => {
     return dispatch => {
-        dispatch(requestMade()); 
-
         $.ajax({
             url: 'http://google.com', 
             success() {
